@@ -8,6 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.slim.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script> -->
+  <script type="text/javascript" src="../jsSHA/src/sha.js"></script>
   <style type="text/css">
     body {
       padding: 0;
@@ -26,6 +31,12 @@
 
     .button {
       margin-top: 10px;
+    }
+
+    .error_message {
+      color: red;
+      font-size: 14px;
+      display: none;
     }
   </style>
 </head>
@@ -60,12 +71,16 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary" href="sign_up.html">
+            <a class="button is-primary" id="sign_up_button" href="sign_up.html">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light" href="login.html">
+            <a class="button is-light" id="login_button" href="login.html">
               Log in
             </a>
+            <span class="button is-danger" id="logout_button" style="display: none;">
+              Log out
+            </span>
+            <p id="user_name" style="display: none;">ゲスト</p>
           </div>
         </div>
       </div>
@@ -73,6 +88,7 @@
   </div>
   <!-- navbar -->
 
+  
   <div class="hero is-primary">
     <div class="hero-body">
       <h1 class="title has-text-centered is-size-2">Sign up Form in NULT</h1>
@@ -86,70 +102,79 @@
             <div class="field">
               <label class="label">First Name (名)</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="First Name (e.g. Taro)">
+                <input class="input" id="first_name" type="text" placeholder="First Name (e.g. Taro)">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user-alt"></i>
                 </span>
+                <span id="first_name_error" class="error_message">※このフォームを入力してください</span>
               </p>
             </div>
 
             <div class="field">
               <label class="label">Last Name (姓)</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Last Name (e.g. Yamada)">
+                <input class="input" id="last_name" type="text" placeholder="Last Name (e.g. Yamada)">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user-alt"></i>
                 </span>
+                <span id="last_name_error" class="error_message">※このフォームを入力してください</span>
               </p>
             </div>
 
             <div class="field">
               <label class="label">UserID (ユーザID)</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="UserID (e.g. t_yamada)">
+                <input class="input" id="user_id" type="text" placeholder="UserID (e.g. t_yamada)">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user-alt"></i>
                 </span>
+                <span id="user_id_error" class="error_message">※このフォームを入力してください</span>
+                <span id="user_id_duplicate_error" class="error_message">※ユーザIDが重複しているので，他のものに変えてください．</span>
               </p>
             </div>
 
             <div class="field">
               <label class="label">Display Name (表示名)</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Display Name (e.g. Yamachan)">
+                <input class="input" id="display_name" type="text" placeholder="Display Name (e.g. Yamachan)">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user-alt"></i>
                 </span>
+                <span id="display_name_error" class="error_message">※このフォームを入力してください</span>
               </p>
             </div>
 
             <div class="field">
               <label class="label">Email (全学メールアドレスのみ)</label>
               <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="taro.yamada@j.mbox.nagoya-u.ac.jp">
+                <input class="input" id="email" type="email" placeholder="taro.yamada@j.mbox.nagoya-u.ac.jp">
                 <span class="icon is-small is-left">
                   <i class="fas fa-envelope"></i>
                 </span>
+                <span id="email_error" class="error_message">※このフォームを入力してください</span>
               </p>
             </div>
 
             <div class="field">
               <label class="label">Password</label>
               <p class="control has-icons-left">
-                <input class="input" type="password" placeholder="Password">
+                <input class="input" id="password" type="password" placeholder="Password">
                 <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                 </span>
+                <span id="password_error" class="error_message">※このフォームを入力してください</span>
               </p>
             </div>
 
 
-            <a class="button is-info is-rounded is-outlined is-medium">Sign in</a>
+            <a class="button is-info is-rounded is-outlined is-medium" id="sign_in_button">Sign in</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="./js/sign_up.js"></script>
+  <script type="text/javascript" src="./js/common.js"></script>
 </body>
 
 </html>

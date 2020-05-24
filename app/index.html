@@ -7,9 +7,9 @@
   <title>名古屋大学 LTサイト</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
   <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/jquery/dist/jquery.slim.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script> -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
@@ -44,12 +44,16 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary" href="sign_up.html">
+            <a class="button is-primary" id="sign_up_button" href="sign_up.html">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light" href="login.html">
+            <a class="button is-light" id="login_button" href="login.html">
               Log in
             </a>
+            <span class="button is-danger" id="logout_button" style="display: none;">
+              Log out
+            </span>
+            <p id="user_name" style="display: none;">ゲスト</p>
           </div>
         </div>
       </div>
@@ -73,9 +77,32 @@
       </div>
       <!-- LT情報 -->
 
+      <!-- modal -->
+      <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+          </header>
+          <section class="modal-card-body">
+            <!-- Content ... -->
+            <p class="modal-content">読み込み中...</p>
+            <p class="modal-user-id"></p>
+            <p class="modal-time"></p>
+            <p class="modal-article-id"></p>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success">参加する</button>
+            <button class="button is-danger">辞退する</button>
+          </footer>
+        </div>
+      </div>
+      <!-- modal -->
+
     </div>
   </section>
 
   <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript" src="./js/common.js"></script>
 </body>
 </html>

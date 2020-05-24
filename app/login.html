@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.slim.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script> -->
+    <script type="text/javascript" src="../jsSHA/src/sha.js"></script>
     <style type="text/css">
       body{
       padding: 0;
@@ -22,6 +27,11 @@
       }
       .button{
       margin-top: 10px;
+      }
+      .error_message {
+        color: red;
+        font-size: 14px;
+        display: none;
       }
     </style>
   </head>
@@ -55,12 +65,16 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary" href="sign_up.html">
+              <a class="button is-primary" id="sign_up_button" href="sign_up.html">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light" href="login.html">
+              <a class="button is-light" id="login_button" href="login.html">
                 Log in
               </a>
+              <span class="button is-danger" id="logout_button" style="display: none;">
+                Log out
+              </span>
+              <p id="user_name" style="display: none;">ゲスト</p>
             </div>
           </div>
         </div>
@@ -80,26 +94,31 @@
               <div class="field">
                 <label class="label">UserID</label>
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="email" placeholder="UserID">
+                  <input class="input" type="email" placeholder="UserID" id="user_id">
                   <span class="icon is-small is-left">
                   <i class="fas fa-user-alt"></i>
                   </span>
+                  <span id="user_id_error" class="error_message">※このフォームを入力してください</span>
                 </p>
               </div>
               <div class="field">
                 <label class="label">Password:</label>
                 <p class="control has-icons-left">
-                  <input class="input" type="password" placeholder="Password">
+                  <input class="input" type="password" placeholder="Password" id="password">
                   <span class="icon is-small is-left">
                   <i class="fas fa-lock"></i>
                   </span>
+                  <span id="password_error" class="error_message">※このフォームを入力してください</span>
+                  <span id="user_not_found" class="error_message">※ユーザが見つかりませんでした。</span>
                 </p>
               </div>
-              <a class="button is-info is-rounded is-outlined is-medium">Login</a>
+              <a class="button is-info is-rounded is-outlined is-medium" id="login_submit_button">Login</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="./js/login.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
   </body>
 </html>
