@@ -11,8 +11,8 @@ $(function () {
   const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
 
   // 本番環境
-  // const BackendBaseURL = "https://go-api-server-nult.herokuapp.com/";
-  // const FrontBaseURL = "https://nult-9c9e8.web.app/";
+  const BackendBaseURL = "https://go-api-server-nult.herokuapp.com/";
+  const FrontBaseURL = "https://nult-9c9e8.web.app/";
 
   //
   // ログインしているかでnavbarの表示を変化させる。
