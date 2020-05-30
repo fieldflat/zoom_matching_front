@@ -11,15 +11,17 @@ $(function() {
   const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
 
   // 本番環境
-  // const BackendBaseURL = "http://localhost:8080/";
-  // const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
+  // const BackendBaseURL = "https://go-api-server-nult.herokuapp.com/";
+  // const FrontBaseURL = "https://nult-9c9e8.web.app/";
 
   //
   // LT情報を返す(dataを元にLT情報を作成する)
   //
   function lt_information(data) {
+    console.log(data);
+
     let str = `
-      <div class="column is-one-third show_action" id="${data.id}">
+      <div class="column is-one-third show_action" id="${data.ID}">
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
@@ -39,12 +41,12 @@ $(function() {
               </div>
             </div>
             <div class="contents">
-              <p class="content">${data.content}</p>
+              <p class="content">${data.contents}</p>
               <a href="#">#css</a> <a href="#">#responsive</a>
               <br>
-              <time datetime="2016-1-1">${data.time}</time>
+              <time datetime="2016-1-1">${data.scheduled_date}</time>
             </div>
-            <p id="article_id">id: ${data.id}</p>
+            <p id="article_id">id: ${data.ID}</p>
           </div>
         </div>
       </div>
@@ -60,55 +62,22 @@ $(function() {
   function append_lt_information(num) {
     
     // LT情報をajaxで取得する
-    
-    let datas = [
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル1",
-        user_id: "field_flat1",
-        content: "コンテンツ．コンテンツ．コンテンツ．1",
-        time: "2020 1/4 15:00 ~ 16:00"
-      },
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル2",
-        user_id: "field_flat2",
-        content: "コンテンツ．コンテンツ．コンテンツ．2",
-        time: "2020 1/4 15:00 ~ 17:00"
-      },
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル3",
-        user_id: "field_flat3",
-        content: "コンテンツ．コンテンツ．コンテンツ．3",
-        time: "2020 1/4 15:00 ~ 18:00"
-      },
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル4",
-        user_id: "field_flat4",
-        content: "コンテンツ．コンテンツ．コンテンツ．4",
-        time: "2020 1/4 15:00 ~ 19:00"
-      },
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル5",
-        user_id: "field_flat5",
-        content: "コンテンツ．コンテンツ．コンテンツ．5",
-        time: "2020 1/4 15:00 ~ 20:00"
-      },
-      {
-        id: Math.floor(Math.random() * Math.floor(10 ** 10)),
-        title: "タイトル6",
-        user_id: "field_flat6",
-        content: "コンテンツ．コンテンツ．コンテンツ．6",
-        time: "2020 1/4 15:00 ~ 21:00"
-      }
-    ];
 
-    for (let i = 0; i < num; i++) {
-      $(".columns").append(lt_information(datas[i]));
-    }
+    $.ajax({
+      url: BackendBaseURL + "posts",
+      type: "GET",
+      dataType: "json",
+      timespan: 10000,
+    }).done(function (data, textStatus, jqXHR) {
+      const datas = data.data;
+      for(let i = 0; i < datas.length; i++) {
+        $(".columns").append(lt_information(datas[i]));
+      }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+
+    }).always(function () {
+
+    });
   }
 
   //
@@ -121,15 +90,15 @@ $(function() {
   //
   // 最下部まで行ったらLT情報を読み込む
   //
-  $(window).on("scroll", function() {
-    var scrollHeight = $(document).height();
-    var scrollPosition = $(window).height() + $(window).scrollTop();
-    if ((scrollHeight - scrollPosition) / scrollHeight <= 0.02) {
-      //スクロールの位置が下部2%の範囲に来た場合
-      append_lt_information(6);
-      console.log(window.sessionStorage.getItem("session_save"));
-    }
-  });
+  // $(window).on("scroll", function() {
+  //   var scrollHeight = $(document).height();
+  //   var scrollPosition = $(window).height() + $(window).scrollTop();
+  //   if ((scrollHeight - scrollPosition) / scrollHeight <= 0.02) {
+  //     //スクロールの位置が下部2%の範囲に来た場合
+  //     append_lt_information(6);
+  //     console.log(window.sessionStorage.getItem("session_save"));
+  //   }
+  // });
 
   //
   // modalを表示させる

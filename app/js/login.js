@@ -15,8 +15,8 @@ $(function() {
   const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
 
   // 本番環境
-  // const BackendBaseURL = "http://localhost:8080/";
-  // const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
+  // const BackendBaseURL = "https://go-api-server-nult.herokuapp.com/";
+  // const FrontBaseURL = "https://nult-9c9e8.web.app/";
 
   //
   // サインインボタン押下後の処理 (sessionにidとdisplay_nameを保持)

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>名古屋大学 LTサイト</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script type="text/javascript" src="./js/jquery.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+
+  <!-- navbar -->
+  <div class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="index.html">
+          Home
+        </a>
+
+        <a class="navbar-item" href="post.html">
+          post
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" id="sign_up_button" href="sign_up.html">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" id="login_button" href="login.html">
+              Log in
+            </a>
+            <span class="button is-danger" id="logout_button" style="display: none;">
+              Log out
+            </span>
+            <p id="user_name" style="display: none;">ゲスト</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- navbar -->
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        投稿 (post)
+      </h1>
+
+      <div class="hero is-primary">
+        <div class="hero-body">
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <div class="notification is-light">
+                <figure class="image container is-64x64">
+                  <img src="bulma.png">
+                </figure>
+      
+                <div class="field">
+                  <label class="label">タイトル</label>
+                  <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="title" type="text" placeholder="タイトルを入力してください">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user-alt"></i>
+                    </span>
+                    <span id="title_error" class="error_message">※このフォームを入力してください</span>
+                  </p>
+                </div>
+      
+                <div class="field">
+                  <label class="label">内容</label>
+                  <p class="control has-icons-left has-icons-right">
+                    <textarea class="textarea" id="contents" placeholder="10 lines of textarea" rows="10"></textarea>
+                    <span id="contents_error" class="error_message">※このフォームを入力してください</span>
+                  </p>
+                </div>
+
+                <div class="field">
+                  <label class="label">開催予定日</label>
+                  <p class="control has-icons-left has-icons-right">
+                    <input type="date" id="scheduled_day">
+                    <span id="scheduled_day_error" class="error_message">※このフォームを入力してください</span>
+                  </p>
+                </div>
+      
+                <div class="field">
+                  <label class="label">開催予定時間</label>
+                  <p class="control has-icons-left has-icons-right">
+                    <div class="select">
+                      <select id="scheduled_time">
+                        <option value="08:00:00">8:00</option>
+                        <option value="08:15:00">8:15</option>
+                        <option value="08:30:00">8:30</option>
+                        <option value="08:45:00">8:45</option>
+                        <option value="09:00:00">9:00</option>
+                        <option value="09:15:00">9:15</option>
+                        <option value="09:30:00">9:30</option>
+                        <option value="09:45:00">9:45</option>
+                        <option value="10:00:00">10:00</option>
+                        <option value="10:15:00">10:15</option>
+                        <option value="10:30:00">10:30</option>
+                        <option value="10:45:00">10:45</option>
+                        <option value="11:00:00">11:00</option>
+                        <option value="11:15:00">11:15</option>
+                        <option value="11:30:00">11:30</option>
+                        <option value="11:45:00">11:45</option>
+                        <option value="12:00:00">12:00</option>
+                        <option value="12:15:00">12:15</option>
+                        <option value="12:30:00">12:30</option>
+                        <option value="12:45:00">12:45</option>
+                        <option value="13:00:00">13:00</option>
+                        <option value="13:15:00">13:15</option>
+                        <option value="13:30:00">13:30</option>
+                        <option value="13:45:00">13:45</option>
+                        <option value="14:00:00">14:00</option>
+                        <option value="14:15:00">14:15</option>
+                        <option value="14:30:00">14:30</option>
+                        <option value="14:45:00">14:45</option>
+                        <option value="15:00:00">15:00</option>
+                        <option value="15:15:00">15:15</option>
+                        <option value="15:30:00">15:30</option>
+                        <option value="15:45:00">15:45</option>
+                        <option value="16:00:00">16:00</option>
+                        <option value="16:15:00">16:15</option>
+                        <option value="16:30:00">16:30</option>
+                        <option value="16:45:00">16:45</option>
+                        <option value="17:00:00">17:00</option>
+                        <option value="17:15:00">17:15</option>
+                        <option value="17:30:00">17:30</option>
+                        <option value="17:45:00">17:45</option>
+                        <option value="18:00:00">18:00</option>
+                        <option value="18:15:00">18:15</option>
+                        <option value="18:30:00">18:30</option>
+                        <option value="18:45:00">18:45</option>
+                        <option value="19:00:00">19:00</option>
+                        <option value="19:15:00">19:15</option>
+                        <option value="19:30:00">19:30</option>
+                        <option value="19:45:00">19:45</option>
+                        <option value="20:00:00">20:00</option>
+                        <option value="20:15:00">20:15</option>
+                        <option value="20:30:00">20:30</option>
+                        <option value="20:45:00">20:45</option>
+                        <option value="21:00:00">21:00</option>
+                        <option value="21:15:00">21:15</option>
+                        <option value="21:30:00">21:30</option>
+                        <option value="21:45:00">21:45</option>
+                        <option value="22:00:00">22:00</option>
+                        <option value="22:15:00">22:15</option>
+                        <option value="22:30:00">22:30</option>
+                        <option value="22:45:00">22:45</option>
+                        <option value="23:00:00">23:00</option>
+                        <option value="23:15:00">23:15</option>
+                        <option value="23:30:00">23:30</option>
+                        <option value="23:45:00">23:45</option>
+                      </select>
+                    </div>
+                    <span id="scheduled_time_error" class="error_message">※このフォームを入力してください</span>
+                  </p>
+                </div>
+
+                <div class="field">
+                  <label class="label">参加費(0円〜)</label>
+                  <p class="control has-icons-left has-icons-right">
+                    <input class="input" id="fee" type="number" value="0">円<br>
+                    <span id="fee_error" class="error_message">※このフォームを入力してください</span>
+                  </p>
+                </div>
+
+                <a class="button is-info is-rounded is-outlined is-medium" id="submit_button">投稿する</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script type="text/javascript" src="./js/post.js"></script>
+  <script type="text/javascript" src="./js/common.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.14.5/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/7.14.5/firebase-analytics.js"></script>
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+</body>
+
+</html>
