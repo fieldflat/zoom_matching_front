@@ -6,8 +6,8 @@ $(function() {
   //
 
   // 開発環境
-  const BackendBaseURL = "http://localhost:8080/";
-  const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
+  // const BackendBaseURL = "http://localhost:8080/";
+  // const FrontBaseURL = "file:///Users/hiratatomonori/Desktop/zoom_matching_front/app/";
 
   // 本番環境
   const BackendBaseURL = "https://go-api-server-nult.herokuapp.com/";
